@@ -1,0 +1,299 @@
+\documentclass[12pt]{article}
+ \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{xcolor}
+ 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+ 
+\title{MA2104 - Multivariable Calculus Suggested Solutions}
+\author{(Semester 2: AY2018/19)}
+\date{Written by: Chen YiJia\\Audited by: Pan Jing Bin}
+
+\maketitle
+ 
+
+{\bf Question 1.} [20 marks]\\
+\indent Let $P$ be the point $(3,3,3)$ in $\R^3$.\\
+
+(a) Find the distance from $P$ to the line $\ell:=x=2y=z$.\\
+
+\textcolor{blue}{
+Notice the line passes through the origin.
+\[
+	\text{Distance}=\Bigg|\begin{pmatrix}3\\3\\3 \end{pmatrix} \times 
+	\frac{\begin{pmatrix}2\\1\\2 \end{pmatrix}}{3}\Bigg|=
+	\frac{1}{3}\Bigg|\begin{pmatrix} 3\\0\\-3 \end{pmatrix}\Bigg|=\sqrt{2}
+\]
+}
+
+(b) Let $S$ be the surface $z=x^2-y^2+3$.\\
+\indent\indent
+(i) Find an equation of the tangent plane $\pi$ to $S$ at $P$.\\
+
+\textcolor{blue}{
+Let $f(x,y)=x^2-y^2+3$.
+\begin{align*}
+	f_x=2x &\qquad f_y=-2y\\
+	f_x(3,3)=6 &\qquad f_y(3,3)=-6\\
+	z-3&=6(x-3)-6(y-3)\\
+	\pi:z&=6x-6y+3
+\end{align*}
+}
+\indent\indent
+(ii) Show that the line $\ell_1:x=y,z=3$ lies in the intersection of $S$ and $\pi$.
+\textcolor{blue}{
+\begin{align*}
+	&\text{To find the intersection, we solve the equation: } x^2-y^2+3=6x-6y+3\\
+	&(x+y)(x-y)=6(x-y)\text{ is true when }x=y.\\
+	&\text{When }x=y, \ z=3\text{ for both }S\text{ and }\pi, \ \forall (x,y)\in \R^2.
+\end{align*}
+}\newpage
+\indent\indent
+(iii) Find symmetric equations of another line $\ell_2$ different from $\ell_1$ that passes through $P$ and lies in the intersection of $S$ and $\pi$.
+\textcolor{blue}{
+\begin{align*}
+	&\text{If }x\neq y, \text{then the intersection yields }x+y=6.\\
+	&\text{Let }x=6,y=0,\text{then }z=39.\\
+	&\ell_2:\begin{pmatrix}
+		3\\3\\3
+	\end{pmatrix} +\begin{pmatrix}
+		6-3\\0-3\\39-3
+	\end{pmatrix}=\begin{pmatrix}
+		3\\3\\3
+	\end{pmatrix}+\lambda\begin{pmatrix}
+		1\\-1\\12
+	\end{pmatrix}\implies x-3=-y+3=\frac{z-3}{12}
+\end{align*}
+}
+
+
+{\bf Question 2.} [15 marks]\\
+\\\indent
+(a) Let $f(x,y)=x^3+y^3+3xy$. Find all critical points of $f$. At each of these critical points, determine whether $f$ has a local maximum, a local minimum, or a saddle point.\\
+
+\textcolor{blue}{
+We first locate the critical points:\\
+\begin{align*}
+	f_x=3x^2+3y &\qquad f_y=3y^2+3x\\
+	3x^2+3y=0\implies y=-x^2 &\qquad 3x^4+3x=0\implies 3x(x^3+1)\\
+\end{align*}
+\indent There are 2 critical points $(0,0)$ and $(-1,-1)$. Next, we calculate the second partial derivatives $D(x,y)$:
+\begin{gather*}
+	f_{xx}=6x\qquad f_{yy}=6y\qquad f_{xy}=3\\
+	D(x,y)=(6x)(6y)-9=36xy-9\\
+	D(0,0)=-9\implies\text{saddle point} \qquad D(-1,-1)=27\implies\text{local min}
+\end{gather*}
+}
+(b) Find the maximum and minimum values of $f(x,y)=2x+y$ subject to the constraint $x^2+2xy+2y^2=5$.\\
+
+\textcolor{blue}{
+By Lagrange Multipliers, \begin{align*}
+	2&=\lambda (2x+2y)\\
+	1&=\lambda (2x+4y)\\
+	2\lambda(x+y)=4\lambda(x+2y)&\implies x+y=2x+4y\implies x=-3y\\
+	\implies 5=9y^2-6y^2+2y^2=5y^2&\implies y=\pm1,x=\mp3\\
+	f(-3,1)=-5\implies min &\qquad f(3,-1)=5\implies max
+\end{align*}
+}
+
+{\bf Question 3.} [15 marks]\\
+\\\indent
+(a) By using transformation $T(x,y)=(x+y,y-2x)$, evaluate the double integral
+\[
+\iint_R\sqrt{x+y}\ (y-2x)^2\ dxdy,
+\]
+\indent\indent where $R$ is the triangle in the $xy$-plane with vertices $A(0,0)$, $B(3,0)$, $C(0,3)$.\\
+
+\textcolor{blue}{
+Using the change of variables $u=x+y,\ v=y-2x$, the vertices are transformed to $A(0,0),\ B(3,-6),\ C(3,3)$. $AB$ is the line $v=-2u$ and $AC$ is the line $v=u$.
+\[
+\frac{\partial(u,v)}{\partial(x,y)}=\begin{vmatrix}
+	1 & 1\\
+	-2 & 1
+\end{vmatrix}=3
+\]
+\begin{align*}
+	\iint_R\sqrt{x+y}\ (y-2x)^2\ dxdy &= \int_{0}^{3}\int_{-2u}^{u}\sqrt{u}v^2\frac{1}{3}\ dvdu\\
+	&=\frac{1}{3}\int_{0}^{3}\left[\frac{1}{3}\sqrt{u}v^3\right]_{-2u}^{u}du\\
+	&=\int_{0}^{3}u^{\frac{7}{2}}\ du\\
+	&=\left[\frac{2}{9}u^{\frac{9}{2}}\right]_{0}^{3}\\
+	&=\frac{2}{9}\cdot3^{\frac{9}{2}}
+\end{align*}}
+
+(b) Let $\mathbf{F}(x,y,z)=\langle y\sin(z),x\sin(z),xy\cos(z)\rangle$ and let $C$ be the curve from $(0,0,0)$ to $(\frac{\pi}{2},\frac{\pi}{2},\frac{\pi}{2})$ with parametric equations:
+\[
+x=t+t\cos(t),\ y=t\sin(t),\ z=t,\qquad 0\leq t\leq\frac{\pi}{2}.
+\]
+\indent\indent Find a potential function of $\mathbf{F}$. Hence, or otherwise, evaluate the line integral $\int_C\mathbf{F}\cdot d\mathbf{r}$.\\
+
+\textcolor{blue}{
+Find potential function $f$ such that $\mathbf{F}=\nabla f$. \begin{align*}
+	&f_x(x,y,z)=y\sin(z) \implies f(x,y,z)=xy\sin(z)+g(y,z)\implies f_y(x,y,z)=x\sin(z)+g_y(y,z)\\
+	&\text{But }f_y(x,y,z)=x\sin(z)\text{ so } g_y(y,z)=0\implies g(y,z)=h(z)\implies f(x,y,z)=xy\sin(z)+h(z)\\
+	&\implies f_z(x,y,z)=xy\cos(z)+h'(z)=xy\cos(z)\implies h'(z)=0\implies h(z)=K,\text{a constant.}\\
+	&\text{Hence, }f=xy\cos(z)\text{ (taking }K=0).
+\end{align*}
+\[
+\int_C\mathbf{F}\cdot d\mathbf{r}=f(\frac{\pi}{2},\frac{\pi}{2},\frac{\pi}{2})-f(0,0,0)=0
+\]
+}
+
+{\bf Question 4.} [15 marks]\\
+\\\indent
+(a) Using Green's Theorem, evaluate the line integral
+\[
+\oint_C(7y-e^{\sin x})\ dx\ +[9x-\cos(y^3+7y)]dy,
+\]
+\indent\indent where $C$ is the circle of radius 2 centred at point $(1,1)$ and is given the counterclockwise orientation.\\
+
+\textcolor{blue}{
+Let $P=7y-e^{\sin x},\ Q=9x-\cos(y^3+7y)$.
+\begin{align*}
+	\int_CP\ dx\ +Q\ dy&=\iint_D\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\ dA\\
+	&=\iint_D 9-7\ dA\\
+	&=2\cdot \pi(2)^2\\
+	&=8\pi
+\end{align*}
+}
+
+(b) Find the volume of the solid bounded below by the cone $\sqrt{3}z=\sqrt{x^2+y^2}$ and above by the sphere $x^2+y^2+z^2=2z$.\\
+
+\textcolor{blue}{
+Using spherical coordinates, the equation of the cone can be written as
+\[
+\sqrt{3}\rho\cos\phi=\sqrt{\rho^2sin^2\phi\cos^2\theta+\rho^2\sin^2\phi\sin^2\theta}=\rho\sin\phi
+\]
+This gives $\tan\phi=\sqrt{3}$, or $\phi=\frac{\pi}{3}$. The equation of the sphere can be written as
+\[
+\rho^2=2\rho\cos\phi\implies\rho=2\cos\phi
+\]
+Therefore the description of the solid $E$ in spherical coordinates is
+\[
+E=\{(\rho,\theta,\phi)\ |\ 0\leq\theta\leq 2\pi,\ 0\leq\phi\leq\frac{\pi}{3},\ 0\leq\rho\leq2\cos\phi\}
+\]
+\begin{align*}
+	\iiint_EdV&=\int_{0}^{2\pi}\int_{0}^{\frac{\pi}{3}}\int_{0}^{2\cos\phi}\rho^2\sin\phi\ d\rho d\phi d\theta\\
+	&=\int_{0}^{2\pi}d\theta\int_{0}^{\frac{\pi}{3}}\sin\phi\left[\frac{\rho^3}{3}\right]_{\rho=0}^{\rho=2\cos\phi}d\phi\\
+	&=\frac{16\pi}{3}\int_{0}^{\frac{\pi}{3}}\sin\phi\cos^3\phi\ d\phi\\
+	&=\frac{16\pi}{3}\left[-\frac{\cos^4\phi}{4}\right]_{0}^{\frac{\pi}{3}}\\
+	&=\frac{5\pi}{4}
+\end{align*}
+}
+
+
+{\bf Question 5.} [15 marks]\\
+\\\indent
+(a) Rewrite the following iterated integral in the order $dydxdz$:
+\[
+\int_{-1}^{1}\int_{x^2}^{1}\int_{0}^{1-y}f(x,y,z)dzdydx.
+\]
+\textcolor{blue}{
+\[
+\int_{-1}^{1}\int_{x^2}^{1}\int_{0}^{1-y}f(x,y,z)dzdydx=\iiint_E f(x,y,z)\ dV
+\]
+where $E=\{(x,y,z)\ |-1\leq x\leq1,x^2\leq y\leq 1,0\leq z\leq 1-y\}$. This description of E enables us to write projections onto the three coordinate planes as follows: \begin{align*}
+	\text{on the }xy\text{-plane:}\qquad &\{(x,y)\ |-1\leq x\leq1,\ x^2\leq y\leq1\}\\
+	=&\{(x,y)\ |\ 0\leq y\leq1,\ -\sqrt{y}\leq x\leq\sqrt{y}\}\\
+	\text{on the }yz\text{-plane:}\qquad &\{(y,z)\ |\ x^2\leq y\leq1,\ 0\leq z\leq1-y\}\\
+	=&\{(y,z)\ |\ 0\leq z\leq1,\ x^2\leq y\leq1-z\}\\
+	\text{on the }xz\text{-plane:}\qquad &\{(x,z)\ |-1\leq x\leq1,\ 0\leq z\leq1-y\}\\
+	=&\{(x,z)\ |\ 0\leq z\leq1,\ -\sqrt{1-z}\leq x\leq\sqrt{1-z}\}
+\end{align*}
+\[
+E=\{(x,y,z)\ |\ 0\leq z\leq1,\ -\sqrt{1-z}\leq x\leq\sqrt{1-z},\ x^2\leq y\leq1-z\}
+\]
+Thus,
+\[
+\iiint_E f(x,y,z)\ dV=\int_0^1\int_{-\sqrt{1-z}}^{\sqrt{1-z}}\int_{x^2}^{1-z}f(x,y,z)dydxdz
+\]\\}
+
+(b) Let $\mathbf{F}(x,y,z)=\langle y^3,x,z^3\rangle$. Let $C$ be the curve of intersection of the surface $z=xy$ and the cylinder $x^2+y^2=1$. $C$ is oriented in the counterclockwise sense when viewed from above. Evaluate
+\[
+\int_C \mathbf{F}\cdot d\mathbf{r}.
+\]
+\\
+\textcolor{blue}{
+Using cylindrical coordinates, $\mathbf{F}(\mathbf{r}(\theta))=\langle\sin^3\theta,\cos\theta,\cos^3\theta\sin^3\theta\rangle$ and the intersection C is $\mathbf{r}(\theta)=\langle\cos\theta,\sin\theta,\cos\theta\sin\theta\rangle$. $\mathbf{r}'(\theta)=\langle-\sin\theta,\cos\theta,\cos^2\theta-\sin^2\theta\rangle$.
+\begin{align*}
+	\int_C \mathbf{F}\cdot d\mathbf{r}&=\int_0^{2\pi}\mathbf{F}(\mathbf{r}(\theta))\cdot\mathbf{r}'(\theta)\ d\theta\\
+	&=\int_0^{2\pi}\begin{pmatrix}
+		\sin^3\theta\\ \cos\theta\\ \cos^3\theta\sin^3\theta
+	\end{pmatrix}\cdot\begin{pmatrix}
+		-\sin\theta\\ \cos\theta\\ \cos^2-\sin^2\theta
+	\end{pmatrix}d\theta\\
+	&=\int_0^{2\pi}-\sin^4\theta+\cos^2\theta+\cos^5\theta\sin^3\theta-\cos^3\theta\sin^5\theta\ d\theta\\
+	&=\int_0^{2\pi}-\sin^4\theta+\cos^2\theta\ d\theta\ \text{ since odd functions are symmetric about 0}\\
+	&=\frac{1}{32}\left[4\theta+16\sin(2\theta)-\sin(4\theta)\right]_0^{2\pi}\\
+	&=\frac{\pi}{4}
+\end{align*}
+}
+
+
+{\bf Question 6.} [20 marks]\\
+\\\indent
+(a) Let $f(x,y,z)$ and $g(x,y,z)$ be functions having continuous 2nd order partial derivatives on $\R^3$. Let $\Sigma$ be a smooth oriented surface in $\R^3$ with boundary $C$ which is a simple closed curve oriented with the positive orientation. Using Stokes' theorem, or otherwise, prove that
+\[
+\int_C f\nabla g\cdot d\mathbf{r}=\int_{-C}g\nabla f\cdot d\mathbf{r}.
+\]
+\textcolor{blue}{
+\begin{align*}
+	\int_{C}g\nabla f\cdot d\mathbf{r}&=\iint_\Sigma\text{curl}\ (f\nabla g)\cdot d\mathbf{\Sigma}=\iint_\Sigma\nabla\times\begin{pmatrix}
+		gf_x\\gf_y\\gf_z
+	\end{pmatrix}\cdot d\mathbf{\Sigma}\\
+	&=\iint_\Sigma\begin{vmatrix}
+		\mathbf{i}&\mathbf{j}&\mathbf{k}\\
+		\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+		gf_x&gf_y&gf_z
+	\end{vmatrix}\cdot d\mathbf{\Sigma}\\
+	(\text{since curl}(\nabla f)=\mathbf{0})&=\iint_\Sigma[g_yf_z-g_zf_y]\mathbf{i}-(g_xf_z-g_zf_x)\mathbf{j}+(g_xf_y-g_yf_x)\mathbf{k}\cdot d\mathbf{\Sigma}\\
+	\int_C f\nabla g\cdot d\mathbf{r}&=\iint_\Sigma\nabla\times\begin{pmatrix}
+		fg_x\\fg_y\\fg_z
+	\end{pmatrix}\cdot d\mathbf{\Sigma}\\
+	&=\iint_\Sigma\begin{vmatrix}
+		\mathbf{i}&\mathbf{j}&\mathbf{k}\\
+		\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+		fg_x&fg_y&fg_z
+	\end{vmatrix}\cdot d\mathbf{\Sigma}\\
+	(\text{since curl}(\nabla g)=\mathbf{0}) &=\iint_\Sigma [(f_yg_z-f_zg_y)\mathbf{i}-(f_xg_z-f_zg_x)\mathbf{j}+(f_xg_y-f_yg_x)\mathbf{k}]\cdot d\Sigma\\
+	&=-\int_{C}g\nabla f\cdot d\mathbf{r}=\int_{-C}g\nabla f\cdot d\mathbf{r}
+\end{align*}
+}
+
+\newpage
+(b) Let $\mathbf{F}$ be the vector field defined by
+\[
+\mathbf{F}(x,y,z)=\Bigg\langle\frac{x}{(x^2+y^2+z^2)^{\frac{3}{2}}},\frac{y}{(x^2+y^2+z^2)^{\frac{3}{2}}},\frac{z}{(x^2+y^2+z^2)^{\frac{3}{2}}}+z^2\Bigg\rangle,
+\]
+where $(x,y,z)\neq(0,0,0)$. Let $S$ be the ellipsoid $x^2+\frac{y^2}{4}+\frac{z^2}{9}=1$ oriented with the outward pointing normal. Using divergence theorem, or otherwise, evaluate
+\[
+\iint_S\mathbf{F}\cdot d\mathbf{S}.
+\]
+\textcolor{blue}{
+Let $\mathbf{F}=\mathbf{F_1}+\mathbf{F_2}$ where
+\[
+\mathbf{F_1}=\frac{1}{(x^2+y^2+z^2)^\frac{3}{2}}\langle x,y,z\rangle\qquad\mathbf{F_2}=\langle0,0,z^2\rangle
+\]
+$S$ is the boundary of the ellipsoid $E$ given by $x^2+\frac{y^2}{4}+\frac{z^2}{9}\leq1$.
+\[
+	\iint_S\mathbf{F_2}\cdot d\mathbf{S}=\iiint_E2z\ dV=0\text{ by symmetry of }E
+\]
+Since $\mathbf{F_1}$ is undefined at $(0,0,0)$, we introduce a unit sphere $T$ centered at $(0,0,0)$ and calculate a modified flux
+\begin{align*}
+	\iint_S\mathbf{F_1}\cdot d\mathbf{S}-\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\iiint_{E'}\nabla\cdot\mathbf{F_1}\ dV=0\\
+	\therefore\iint_S\mathbf{F_1}\cdot d\mathbf{S}&=\iint_T\mathbf{F_1}\cdot d\mathbf{T}\\
+	\mathbf{F_1}\cdot d\mathbf{T}=\frac{\langle x,y,z\rangle}{(x^2+y^2+z^2)^\frac{3}{2}}\cdot|\langle x,y,z\rangle|&=\frac{\langle x,y,z\rangle}{(x^2+y^2+z^2)^\frac{3}{2}}\cdot\frac{\langle x,y,z\rangle}{\sqrt{x^2+y^2+z^2}}=\frac{\rho^2}{\rho^4}\\
+	\iint_S\mathbf{F}\cdot d\mathbf{S}=\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\int_0^{2\pi}\int_0^{\pi}\int_0^1\left(\frac{\rho^2}{\rho^4}\right)\rho^2\sin\phi\ d\rho d\phi d\theta=4\pi
+\end{align*}
+}
+
+
+
+\begin{center}
+	\textbf{END OF PAPER}
+\end{center}
+\end{document}
+
+
