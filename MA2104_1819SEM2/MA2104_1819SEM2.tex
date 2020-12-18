@@ -172,14 +172,14 @@ This gives $\tan\phi=\sqrt{3}$, or $\phi=\frac{\pi}{3}$. The equation of the sph
 \]
 Therefore the description of the solid $E$ in spherical coordinates is
 \[
-E=\{(\rho,\theta,\phi)\ |\ 0\leq\theta\leq 2\pi,\ 0\leq\phi\leq\frac{\pi}{3},\ 0\leq\rho\leq2\cos\phi\}
+E=\{(\rho,\theta,\phi)\ |\ 0\leq\theta\leq 2\pi,\ \frac{\pi}{3}\leq\phi\leq\frac{\pi}{2},\ 0\leq\rho\leq2\cos\phi\}
 \]
 \begin{align*}
-	\iiint_EdV&=\int_{0}^{2\pi}\int_{0}^{\frac{\pi}{3}}\int_{0}^{2\cos\phi}\rho^2\sin\phi\ d\rho d\phi d\theta\\
-	&=\int_{0}^{2\pi}d\theta\int_{0}^{\frac{\pi}{3}}\sin\phi\left[\frac{\rho^3}{3}\right]_{\rho=0}^{\rho=2\cos\phi}d\phi\\
-	&=\frac{16\pi}{3}\int_{0}^{\frac{\pi}{3}}\sin\phi\cos^3\phi\ d\phi\\
-	&=\frac{16\pi}{3}\left[-\frac{\cos^4\phi}{4}\right]_{0}^{\frac{\pi}{3}}\\
-	&=\frac{5\pi}{4}
+	\iiint_EdV&=\int_{0}^{2\pi}\int_{\frac{\pi}{3}}^{\frac{\pi}{2}}\int_{0}^{2\cos\phi}\rho^2\sin\phi\ d\rho d\phi d\theta\\
+	&=\int_{0}^{2\pi}d\theta\int_{\frac{\pi}{3}}^{\frac{\pi}{2}}\sin\phi\left[\frac{\rho^3}{3}\right]_{\rho=0}^{\rho=2\cos\phi}d\phi\\
+	&=\frac{16\pi}{3}\int_{\frac{\pi}{3}}^{\frac{\pi}{2}}\sin\phi\cos^3\phi\ d\phi\\
+	&=\frac{16\pi}{3}\left[-\frac{\cos^4\phi}{4}\right]_{\frac{\pi}{3}}^{\frac{\pi}{2}}\\
+	&=\frac{\pi}{12}
 \end{align*}
 }
 
@@ -285,7 +285,7 @@ Since $\mathbf{F_1}$ is undefined at $(0,0,0)$, we introduce a unit sphere $T$ c
 	\iint_S\mathbf{F_1}\cdot d\mathbf{S}-\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\iiint_{E'}\nabla\cdot\mathbf{F_1}\ dV=0\\
 	\therefore\iint_S\mathbf{F_1}\cdot d\mathbf{S}&=\iint_T\mathbf{F_1}\cdot d\mathbf{T}\\
 	\mathbf{F_1}\cdot d\mathbf{T}=\frac{\langle x,y,z\rangle}{(x^2+y^2+z^2)^\frac{3}{2}}\cdot|\langle x,y,z\rangle|&=\frac{\langle x,y,z\rangle}{(x^2+y^2+z^2)^\frac{3}{2}}\cdot\frac{\langle x,y,z\rangle}{\sqrt{x^2+y^2+z^2}}=\frac{\rho^2}{\rho^4}\\
-	\iint_S\mathbf{F}\cdot d\mathbf{S}=\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\int_0^{2\pi}\int_0^{\pi}\int_0^1\left(\frac{\rho^2}{\rho^4}\right)\rho^2\sin\phi\ d\rho d\phi d\theta=4\pi
+	\iint_S\mathbf{F}\cdot d\mathbf{S}=\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\int_0^{2\pi}\int_0^{\pi}\left(\frac{\rho^2}{\rho^4}\right)\rho^2\sin\phi\ d\phi d\theta=4\pi
 \end{align*}
 }
 
