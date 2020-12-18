@@ -84,7 +84,7 @@ We first locate the critical points:\\
 \begin{gather*}
 	f_{xx}=6x\qquad f_{yy}=6y\qquad f_{xy}=3\\
 	D(x,y)=(6x)(6y)-9=36xy-9\\
-	D(0,0)=-9\implies\text{saddle point} \qquad D(-1,-1)=27\implies\text{local min}
+	D(0,0)=-9\implies\text{saddle point} \qquad D(-1,-1)=27\implies\text{local max since }f_{xx}(-1)=-6
 \end{gather*}
 }
 (b) Find the maximum and minimum values of $f(x,y)=2x+y$ subject to the constraint $x^2+2xy+2y^2=5$.\\
@@ -134,10 +134,10 @@ Find potential function $f$ such that $\mathbf{F}=\nabla f$. \begin{align*}
 	&f_x(x,y,z)=y\sin(z) \implies f(x,y,z)=xy\sin(z)+g(y,z)\implies f_y(x,y,z)=x\sin(z)+g_y(y,z)\\
 	&\text{But }f_y(x,y,z)=x\sin(z)\text{ so } g_y(y,z)=0\implies g(y,z)=h(z)\implies f(x,y,z)=xy\sin(z)+h(z)\\
 	&\implies f_z(x,y,z)=xy\cos(z)+h'(z)=xy\cos(z)\implies h'(z)=0\implies h(z)=K,\text{a constant.}\\
-	&\text{Hence, }f=xy\cos(z)\text{ (taking }K=0).
+	&\text{Hence, }f=xy\sin(z)\text{ (taking }K=0).
 \end{align*}
 \[
-\int_C\mathbf{F}\cdot d\mathbf{r}=f(\frac{\pi}{2},\frac{\pi}{2},\frac{\pi}{2})-f(0,0,0)=0
+\int_C\mathbf{F}\cdot d\mathbf{r}=f(\frac{\pi}{2},\frac{\pi}{2},\frac{\pi}{2})-f(0,0,0)=\frac{\pi^2}{4}
 \]
 }
 
@@ -282,7 +282,10 @@ $S$ is the boundary of the ellipsoid $E$ given by $x^2+\frac{y^2}{4}+\frac{z^2}{
 \]
 Since $\mathbf{F_1}$ is undefined at $(0,0,0)$, we introduce a unit sphere $T$ centered at $(0,0,0)$ and calculate a modified flux
 \begin{align*}
-	\iint_S\mathbf{F_1}\cdot d\mathbf{S}-\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\iiint_{E'}\nabla\cdot\mathbf{F_1}\ dV=0\\
+	\text{div }\mathbf{F_1}=\frac{(x^2+y^2+z^2)^\frac{3}{2}-x(3x)(x^2+y^2+z^2)^\frac{1}{2}}{(x^2+y^2+z^2)^3}&+\frac{(x^2+y^2+z^2)^\frac{3}{2}-x(3y)(x^2+y^2+z^2)^\frac{1}{2}}{(x^2+y^2+z^2)^3}\\
+	+\frac{(x^2+y^2+z^2)^\frac{3}{2}-x(3z)(x^2+y^2+z^2)^\frac{1}{2}}{(x^2+y^2+z^2)^3}\\
+	=\frac{3}{(x^2+y^2+z^2)^\frac{3}{2}}-\frac{3(x^2+y^2+z^2)}{(x^2+y^2+z^2)^\frac{5}{2}}=0\\
+	\iint_S\mathbf{F_1}\cdot d\mathbf{S}-\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\iiint_{E'}\text{div }\mathbf{F_1}\ dV=0\\
 	\therefore\iint_S\mathbf{F_1}\cdot d\mathbf{S}&=\iint_T\mathbf{F_1}\cdot d\mathbf{T}\\
 	\mathbf{F_1}\cdot d\mathbf{T}=\frac{\langle x,y,z\rangle}{(x^2+y^2+z^2)^\frac{3}{2}}\cdot|\langle x,y,z\rangle|&=\frac{\langle x,y,z\rangle}{(x^2+y^2+z^2)^\frac{3}{2}}\cdot\frac{\langle x,y,z\rangle}{\sqrt{x^2+y^2+z^2}}=\frac{\rho^2}{\rho^4}\\
 	\iint_S\mathbf{F}\cdot d\mathbf{S}=\iint_T\mathbf{F_1}\cdot d\mathbf{T}&=\int_0^{2\pi}\int_0^{\pi}\left(\frac{\rho^2}{\rho^4}\right)\rho^2\sin\phi\ d\phi d\theta=4\pi
